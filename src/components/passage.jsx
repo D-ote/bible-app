@@ -22,8 +22,21 @@ const Passage = () => {
   };
 
   useEffect(() => {
+    const getPassage = async () => {
+      try {
+        const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
+  
+        const res = await axios.get(passage);
+        setPassage(res.data.verses);
+        console.log(res.data.verses);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+      
     getPassage();
   }, []);
+  
   return (
     <div className="passageDiv" style={{ backgroundColor: "rgb(255, 234, 208)" }}>
     <div className="passageHeader">{details.abbrev.en} chapter {chapter}</div>
