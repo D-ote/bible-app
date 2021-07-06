@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import LandingPage from "./components/landingPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Books from "./components/books";
+import FindBooks from "./components/findBooks";
+import Version from "./components/version";
+import Passage from "./components/passage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path="/" exact component = {LandingPage} />
+      <Route path="/books" exact component = {Books} />
+      <Route path="/findBooks" exact component = {FindBooks} />
+      <Route path="/version" exact component = {Version} />
+      <Route path="/passage/:abrev/:chapter" exact component = {Passage} />
+    </Router>
   );
 }
 

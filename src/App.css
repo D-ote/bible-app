@@ -1,38 +1,248 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landingPage{
+  height: 100vh;
+  background-color: rgba(248, 247, 216, 0.7);
+}
+
+.landingPageBtn  {
+  padding: 8px 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+}
+
+/*books*/
+
+.outerPadding {
+  padding: 50px;
+}
+
+.books {
+  background-color: indianred;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.findBooks {
+  background-color: khaki;
+  padding: 10px 40px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-weight: 600;
+}
+
+.findBooks:hover {
+  cursor: pointer;
+  background-color: rgb(211, 205, 151);
+}
+
+.booksBtn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 12.5px 20px;
+  border: 1px solid grey;
+  font-weight: 600;
+}
+
+.booksBtn:hover {
+  background-color: rgb(221, 221, 221);
+  cursor: pointer;
+}
+
+a {  
+  color: black !important;
+  text-decoration: none;
+}
+
+/*findBooks*/
+
+.header {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  padding: 20px 40px;
+  background-color: rgb(255, 234, 208);
+}
+
+.ref {
+  margin-right: auto;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.backIcon {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.findBookIcon:not(:last-child) {
+  padding-right: 40px;
+}
+
+.findBookIcon:hover {
+  cursor: pointer;
+  color: rgb(114, 114, 114);
+}
+
+.bibleBooksDiv {
+  padding: 50px;
+}
+
+.bibleBooksHeader{
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.bibleBooksHeader li {
+  padding: 20px;
+  cursor: pointer;
+}
+
+form {
+  padding: 20px;
+  position: relative;
+}
+
+.findBookSearch {
+  padding: 8px 50px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgb(207, 207, 207);
+  outline: none;
+}
+
+.findBooksSearchIcon {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  color: rgb(180, 180, 180);
+}
+
+.bibleBooks {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0px 20px 20px 20px;
+}
+
+.bibleBooks ul li {
+  list-style: none;
+  padding: 6px;
+  margin-bottom: 10px;
+  background-color: rgb(255, 234, 208);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.bibleBooks ul li:hover {
+  cursor: pointer;
+  background-color: rgb(214, 198, 179);
+}
+
+/*chapter*/
+
+.chapters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 0px 20px 20px 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.chapterDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 85px;
+}
+
+.chapterNum {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chapterNum:hover {
+  cursor: pointer;
+  background-color: rgb(255, 234, 208);
+  border-radius: 50%;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* passage */
+
+.passage {
+  max-width: 1000px;
+  list-style: decimal;
+  margin: 20px auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.passage li {
+  padding: 5px;
+}
+
+.passageHeader {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 20px;
+}
+
+/* version */
+
+.version {
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+.versionList {
+  list-style: none;
+}
+
+.versionList li {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgb(255, 231, 199);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.versionList li:hover {
+  cursor: pointer;
+  background-color: rgb(214, 198, 179);  
+}
+
+.versionHeader {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: flex-end;
+  margin: 20px auto;
+  text-align: center;
+  max-width: 1000px;
+  font-weight: 700;
+  font-size: 30px;
 }
