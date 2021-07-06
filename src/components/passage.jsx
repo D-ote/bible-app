@@ -8,12 +8,11 @@ const Passage = () => {
   const { state } = useLocation();
   const { details, chapter } = state;
   console.log(params, "yyiuii");
+  const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
 
   useEffect(() => {
     const getPassage = async () => {
       try {
-        const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
-  
         const res = await axios.get(passage);
         setPassage(res.data.verses);
         console.log(res.data.verses);
