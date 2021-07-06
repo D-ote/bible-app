@@ -19,6 +19,13 @@
 
 /*books*/
 
+.booksBackground {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .outerPadding {
   padding: 50px;
 }
@@ -210,6 +217,11 @@ form {
   text-transform: uppercase;
   font-weight: 700;
   padding: 20px;
+}
+
+.passageDiv {
+  background-color: rgb(255, 234, 208);
+  height: 100%;
 }
 
 /* version */

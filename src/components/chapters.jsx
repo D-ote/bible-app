@@ -22,7 +22,7 @@ const Chapters = ({ book }) => {
             {Array.from({ length: book.chapters }, (_, index) => {
                 return (
                   <Link onClick={(e) => navigate(e, book, index + 1)}>
-                <div className="chapterDiv">
+                <div className="chapterDiv" key={index.id}>
                   <div className="chapterNum">{`chapter ${index + 1}`}</div>
                 </div>
             </Link>

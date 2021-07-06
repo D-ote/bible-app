@@ -26,7 +26,7 @@ const Passage = () => {
   }, []);
   
   return (
-    <div className="passageDiv" style={{ backgroundColor: "rgb(255, 234, 208)" }}>
+    <div className="passageDiv">
     <div className="passageHeader">{details.abbrev.en} chapter {chapter}</div>
       <ul className="passage">
         {chapterPassage.map((chapter) => {
