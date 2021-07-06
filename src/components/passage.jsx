@@ -8,22 +8,23 @@ const Passage = () => {
   const { state } = useLocation();
   const { details, chapter } = state;
   console.log(params, "yyiuii");
+  
+  const getPassage = async () => {
+    try {
+      const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
+
+      const res = await axios.get(passage);
+      setPassage(res.data.verses);
+      console.log(res.data.verses);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const getPassage = async () => {
-      try {
-        const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
-  
-        const res = await axios.get(passage);
-        setPassage(res.data.verses);
-        console.log(res.data.verses);
-      } catch (err) {
-        console.log(err);
-      }
-    };
       
     getPassage();
-  }, []);
+  }, [getPassage]);
   
   return (
     <div className="passageDiv">
