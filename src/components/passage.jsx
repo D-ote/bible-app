@@ -5,20 +5,19 @@ import { useLocation } from "react-router-dom";
 const Passage = () => {
   const [chapterPassage, setPassage] = useState([]);
   //   const params = useParams();
-  const { state } = useLocation();
-  const { details, chapter } = state;
-  
-  const getPassage = async () => {
-    try {
-      const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
-      const res = await axios.get(passage);
-      setPassage(res.data.verses);
-    } catch (err) {
-      return err;
-    }
-  };
 
   useEffect(() => {
+    const getPassage = async () => {
+      try {
+        const { state } = useLocation();
+        const { details, chapter } = state;
+        const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
+        const res = await axios.get(passage);
+        setPassage(res.data.verses);
+      } catch (err) {
+        return err;
+      }
+    };
 
     getPassage();
   }, []);
