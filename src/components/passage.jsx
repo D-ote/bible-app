@@ -23,7 +23,8 @@ const Passage = () => {
     };
       
     getPassage();
-  }, [getPassage]);
+    // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
   
   return (
     <div className="passageDiv">
