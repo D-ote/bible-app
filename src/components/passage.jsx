@@ -18,7 +18,7 @@ const Passage = () => {
     } catch (err) {
       console.log(err);
     }
-  });
+  },[chapter, abbrev]);
 
   useEffect(() => {
     getPassage();
