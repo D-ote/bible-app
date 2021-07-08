@@ -8,7 +8,6 @@ const Passage = () => {
   const { name, chapter } = params;
   const { state } = useLocation();
   const { abbrev } = state;
-  console.log(params, "yyiuii");
 
   const getPassage = async () => {
     try {
@@ -16,7 +15,6 @@ const Passage = () => {
 
       const res = await axios.get(passage);
       setPassage(res.data.verses);
-      console.log(res.data.verses);
     } catch (err) {
       console.log(err);
     }

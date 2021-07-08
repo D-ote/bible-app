@@ -7,7 +7,6 @@ const Chapters = ({ book }) => {
   const history = useHistory();
   const navigate = (e, details, chapter) => {
     e.preventDefault();
-    console.log({ chapter }, "wwrgr");
     history.push(`/passage/${details.name}/${chapter}`, {
       abbrev: details.abbrev,
     });
