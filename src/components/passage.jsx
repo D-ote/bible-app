@@ -22,7 +22,7 @@ const Passage = () => {
 
   useEffect(() => {
     getPassage();
-  }, []);
+  }, [getPassage]);
   return (
     <div
       className="passageDiv"
