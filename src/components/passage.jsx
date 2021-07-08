@@ -1,30 +1,36 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Passage = () => {
   const [chapterPassage, setPassage] = useState([]);
-  //   const params = useParams();
+  const params = useParams();
+  const { name, chapter } = params;
+  const { state } = useLocation();
+  const { abbrev } = state;
+  console.log(params, "yyiuii");
+
+  const getPassage = async () => {
+    try {
+      const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${abbrev.en}/${chapter}`;
+
+      const res = await axios.get(passage);
+      setPassage(res.data.verses);
+      console.log(res.data.verses);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const getPassage = async () => {
-      try {
-        const { state } = useLocation();
-        const { details, chapter } = state;
-        const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${details.abbrev.en}/${chapter}`;
-        const res = await axios.get(passage);
-        setPassage(res.data.verses);
-      } catch (err) {
-        return err;
-      }
-    };
-
     getPassage();
   }, []);
-
   return (
-    <div className="passageDiv">
-      {/* <div className="passageHeader">{details.abbrev.en} chapter {chapter}</div> */}
+    <div
+      className="passageDiv"
+      style={{ backgroundColor: "rgb(255, 234, 208)" }}
+    >
+      <div className="passageHeader">{`${name} chapter ${chapter}`}</div>
       <ul className="passage">
         {chapterPassage.map((chapter) => {
           return <li key={chapter.id}>{chapter.text}</li>;

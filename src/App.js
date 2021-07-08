@@ -13,7 +13,7 @@ function App() {
       <Route path="/books" exact component = {Books} />
       <Route path="/findBooks" exact component = {FindBooks} />
       <Route path="/version" exact component = {Version} />
-      <Route path="/passage/:abrev/:chapter" exact component = {Passage} />
+      <Route path="/passage/:name/:chapter" exact component = {Passage} />
     </Router>
   );
 }
