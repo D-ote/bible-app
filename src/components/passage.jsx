@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import axios from "axios";
 import { useLocation, useParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const Passage = () => {
   const { state } = useLocation();
   const { abbrev } = state;
 
-  const getPassage = async () => {
+  const getPassage = useCallback(async () => {
     try {
       const passage = `https://www.abibliadigital.com.br/api/verses/kjv/${abbrev.en}/${chapter}`;
 
@@ -18,11 +18,11 @@ const Passage = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  });
 
   useEffect(() => {
     getPassage();
-  }, [getPassage]);
+  }, []);
   return (
     <div
       className="passageDiv"
