@@ -13,7 +13,9 @@
   padding: 8px 12px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   cursor: pointer;
 }
 
@@ -115,13 +117,22 @@ a {
   list-style: none;
   justify-content: space-evenly;
   font-weight: bold;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.underline {
   border-bottom: 1px solid rgb(207, 207, 207);
 }
 
-.bibleBooksHeader li {
+.padded {
   padding: 20px;
   cursor: pointer;
 }
+
+/* .bibleBooksHeader li .nextIcon {
+  padding: 20px 10px 20px 10px !important;
+} */
 
 form {
   padding: 20px;
@@ -206,7 +217,7 @@ form {
   max-width: 1000px;
   list-style: decimal;
   margin: 0 auto;
-  padding-top: 20px;
+  padding: 20px 50px 20px 50px;
 }
 
 .passage li {
@@ -230,15 +241,22 @@ form {
 .version {
   max-width: 1000px;
   margin: 20px auto;
+  padding: 50px;
 }
 
 .versionList {
   list-style: none;
+  padding: 20px;
+}
+
+.versionBackIcon {
+  font-size: 20px;
+  margin-right: 20px;
 }
 
 .versionList li {
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 10px;
   background-color: rgb(255, 231, 199);
   border-radius: 4px;
   font-weight: 600;
@@ -258,4 +276,65 @@ form {
   max-width: 1000px;
   font-weight: 700;
   font-size: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .bibleBooksHeader{
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    font-size: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .underline {
+    border-bottom: 1px solid rgb(207, 207, 207);
+  }
+  
+  .bibleBooksHeader li {
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  .findBooks {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .booksBtn {
+    font-size: 12px;
+    padding: 12.5px 10px;
+    font-weight: 600;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .books {
+    background-color: rgb(248, 133, 133);
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }  
+
+  .findBooks {
+    border-radius: 5px;
+  }
+  
+  .booksBtn {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+  }
 }

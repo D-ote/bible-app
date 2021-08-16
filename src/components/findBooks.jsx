@@ -1,31 +1,28 @@
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { BsChevronLeft } from "react-icons/bs";
 import { FiArchive } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Chapters from "./chapters";
+import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import fetchBooks from "./store/actions/books";
 
-const FindBooks = () => {
+const FindBooks = (props) => {
   const [books, setBooks] = useState([]);
   const [originalBooks, setOriginalBooks] = useState([]);
   const [search, setSearch] = useState();
 
-  const getBooks = async () => {
-    try {
-      const res = await axios.get(
-        "https://www.abibliadigital.com.br/api/books"
-      );
-      setBooks(res.data);
-      setOriginalBooks(res.data)
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getBooks();
+    props.fetchBooks()
+    .catch(err=>{
+      console.log({err});
+    })
   }, []);
 
+  useEffect(() => {
+    setBooks(props.books)
+    setOriginalBooks(props.books)
+  }, [props.books]);
 
   const findSearch = (e) => {
     e.preventDefault();
@@ -40,8 +37,8 @@ const FindBooks = () => {
   return (
     <>
       <ul className="header">
-        <li className="ref">
-          <BsChevronLeft className="backIcon" /> References
+        <li className="ref"><Link to="/books">
+          <BsChevronLeft className="backIcon" /></Link> References
         </li>
         <li className="findBookIcon">
           <FiArchive />
@@ -52,12 +49,11 @@ const FindBooks = () => {
       </ul>
       <div className="bibleBooksDiv">
         <ul className="bibleBooksHeader">
-          <li>Books</li>
-          <li><BsChevronRight className="backIcon" /></li>
-          <li>Chapters</li>
-          <li><BsChevronRight className="backIcon" /></li>
-          <li>Passage</li>
+          <li className="padded">Books</li>
+          <li className="padded">Chapters</li>
+          <li className="padded">Passage</li>
         </ul>
+        <div className="underline"></div>
         <form action="search">
           <BiSearch className="findBooksSearchIcon" />
           <input
@@ -81,4 +77,11 @@ const FindBooks = () => {
   );
 };
 
-export default FindBooks;
+const mapStateToProps = (state) => {
+  console.log({state});
+  return{
+    books:state.booksReducer.books
+  }
+}
+
+export default connect(mapStateToProps, {fetchBooks})(FindBooks);

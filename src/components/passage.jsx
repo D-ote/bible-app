@@ -1,6 +1,7 @@
-import { useState, useEffect,useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 
 const Passage = () => {
   const [chapterPassage, setPassage] = useState([]);
@@ -18,7 +19,7 @@ const Passage = () => {
     } catch (err) {
       console.log(err);
     }
-  },[chapter, abbrev]);
+  }, [chapter, abbrev]);
 
   useEffect(() => {
     getPassage();
@@ -28,7 +29,12 @@ const Passage = () => {
       className="passageDiv"
       style={{ backgroundColor: "rgb(255, 234, 208)" }}
     >
-      <div className="passageHeader">{`${name} chapter ${chapter}`}</div>
+      <div className="passageHeader">
+        <Link to="/findBooks">
+          <BsChevronLeft className="backIcon" />
+        </Link>
+        {`${name} chapter ${chapter}`}
+      </div>
       <ul className="passage">
         {chapterPassage.map((chapter) => {
           return <li key={chapter.id}>{chapter.text}</li>;
